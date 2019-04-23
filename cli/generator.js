@@ -12,7 +12,7 @@ const path = require('path')
 
 module.exports = class Generator extends EventEmitter {
 
-  constructor(options,arr) {
+  constructor(key,options,arr) {
     super()
     this.options = Object.assign({},{
       package: 'com.application.demo',
@@ -23,6 +23,8 @@ module.exports = class Generator extends EventEmitter {
       type: 'list'
     },options)
     this.arr = arr
+    this.key = key
+    
   }
 
   // 初始化manifest
