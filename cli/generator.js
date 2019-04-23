@@ -12,7 +12,7 @@ const path = require('path')
 
 module.exports = class Generator extends EventEmitter {
 
-  constructor(key,options,arr) {
+  constructor(key,options,pagearr) {
     super()
     this.options = Object.assign({},{
       package: 'com.application.demo',
@@ -22,9 +22,8 @@ module.exports = class Generator extends EventEmitter {
       features: ['prompt','router','shortcut'],
       type: 'list'
     },options)
-    this.arr = arr
+    this.pagearr = pagearr
     this.key = key
-    
   }
 
   // 初始化manifest
@@ -33,5 +32,9 @@ module.exports = class Generator extends EventEmitter {
     let t = fs.readFileSync(path.resolve(__dirname,'./template/manifest.txt'),'utf-8');
     let a = ejs.render(t,this.options);
     fs.writeFileSync(path.resolve(__dirname,'../quickapp/src/manifest.json'),a)
+  }
+
+  initPage () {
+    
   }
 }
