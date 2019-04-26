@@ -31,10 +31,12 @@ module.exports = class Generator extends EventEmitter {
   initManifest () {
     let t = fs.readFileSync(path.resolve(__dirname,'./template/manifest.txt'),'utf-8');
     let a = ejs.render(t,this.options);
-    fs.writeFileSync(path.resolve(__dirname,'../quickapp/src/manifest.json'),a)
+    fs.writeFileSync(path.resolve(__dirname,`../quickapps/qk_${this.key}/src/manifest.json`),a)
   }
 
-  initPage () {
-    
+  initPage (pagename='') {
+    let t = fs.readFileSync(path.resolve(__dirname,'./template/page.txt'),'utf-8');
+    let a = ejs.render(t,this.pagearr);
+    fs.writeFileSync(path.resolve(__dirname,`../quickapps/qk_${this.key}/src/${pagename}/manifest.json`),a)
   }
 }

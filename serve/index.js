@@ -27,7 +27,9 @@ app.use(async (ctx, next) => {
 
 router.get('/test',(ctx,next)=> {
   console.log("启动打包")
-  Init();
+  console.log(ctx)
+  let key = new Date().getTime();
+  Init(key);
 })
 
 app.use(router.routes()).use(router.allowedMethods());
